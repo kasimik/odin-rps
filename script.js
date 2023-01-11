@@ -1,3 +1,11 @@
+const display = document.querySelector('#display');
+const playerScoreDisplay = document.querySelector('#playerScore');
+const compScoreDisplay = document.querySelector('#compScore');
+
+
+let playerScore = 0;
+let compScore = 0;
+
 //Moves for computer
 //Picks a random number 1-3
 //Returns R, P, or S
@@ -16,34 +24,122 @@ function computerPlay() {
   }
 }
 
+function displayScore() {
+   if (playerScore === 5) {
+    display.textContent += " You won!";
+    playerScoreDisplay.textContent = playerScore;
+    compScoreDisplay.textContent = compScore;
+  } else if (compScore === 5) {
+    display.textContent += " You lost!";
+    playerScoreDisplay.textContent = playerScore;
+    compScoreDisplay.textContent = compScore;
+  } else {
+    playerScoreDisplay.textContent = playerScore;
+    compScoreDisplay.textContent = compScore;
+  }
+}
+
 //Determine winner of round
 //Standardize playerSelection
 //Switch statement - all possible combinations
 //return text
 
-function playRound(playerSelection, computerSelection) {
-  stdPlayerSelection = playerSelection.toLowerCase();
+/*function playRound(e) {
+
+  stdPlayerSelection = e.target.id;
+  computerSelection = computerPlay();
+
   switch(true) {
     case (stdPlayerSelection === 'rock' && computerSelection === 'rock'):
-      return 'You both picked rock! Try again.';
+      console.log('You both picked rock! Try again.');
+      break;
     case (stdPlayerSelection === 'paper' && computerSelection === 'paper'):
-      return 'You both picked paper! Try again.';
+      console.log('You both picked paper! Try again.');
+      break;
     case (stdPlayerSelection === 'scissors' && computerSelection === 'scissors'):
-      return 'You both picked scissors! Try again.';
+      console.log('You both picked scissors! Try again.');
+      break;
     case (stdPlayerSelection === 'rock' && computerSelection === 'paper'):
-      return 'You lose this round! Paper beats rock';
+      console.log('You lose this round! Paper beats rock');
+      break;
     case (stdPlayerSelection === 'rock' && computerSelection === 'scissors'):
-      return 'You win this round! Rock beats scissors';
+      console.log('You win this round! Rock beats scissors');
+      break;
     case (stdPlayerSelection === 'paper' && computerSelection === 'rock'):
-      return 'You win this round! Paper beats rock';
+      console.log('You win this round! Paper beats rock');
+      break;
     case (stdPlayerSelection === 'paper' && computerSelection === 'scissors'):
-      return 'You lose this round! Scissors beat paper';
+      console.log('You lose this round! Scissors beat paper');
+      break;
     case (stdPlayerSelection === 'scissors' && computerSelection === 'rock'):
-      return 'You lose this round! Rock beats scissors';
+      console.log('You lose this round! Rock beats scissors');
+      break;
     case (stdPlayerSelection === 'scissors' && computerSelection === 'paper'):
-      return 'You win this round! Scissors beat paper';
+      console.log('You win this round! Scissors beat paper');
+      break;
+  }
+}*/
+
+function playRound(e) {
+  stdPlayerSelection = e.target.id;
+  computerSelection = computerPlay();
+
+  switch(true) {
+    case (stdPlayerSelection === 'rock' && computerSelection === 'rock'):
+      display.textContent = 'You both picked rock! Try again.';
+      displayScore();
+      break;
+    case (stdPlayerSelection === 'paper' && computerSelection === 'paper'):
+      display.textContent = 'You both picked paper! Try again.';
+      displayScore();
+      break;
+    case (stdPlayerSelection === 'scissors' && computerSelection === 'scissors'):
+      display.textContent = 'You both picked scissors! Try again.';
+      displayScore();
+      break;
+    case (stdPlayerSelection === 'rock' && computerSelection === 'paper'):
+      display.textContent = 'You lose this round! Paper beats rock';
+      compScore ++;
+      displayScore();
+      break;
+    case (stdPlayerSelection === 'rock' && computerSelection === 'scissors'):
+      display.textContent = 'You win this round! Rock beats scissors';
+      playerScore ++;
+      displayScore();
+      break;
+    case (stdPlayerSelection === 'paper' && computerSelection === 'rock'):
+      display.textContent = 'You win this round! Paper beats rock';
+      playerScore ++;
+      displayScore();
+      break;
+    case (stdPlayerSelection === 'paper' && computerSelection === 'scissors'):
+      display.textContent = 'You lose this round! Scissors beat paper';
+      compScore ++;
+      displayScore();
+
+      break;
+    case (stdPlayerSelection === 'scissors' && computerSelection === 'rock'):
+      display.textContent = 'You lose this round! Rock beats scissors';
+      compScore ++;
+      displayScore();
+
+      break;
+    case (stdPlayerSelection === 'scissors' && computerSelection === 'paper'):
+      display.textContent = 'You win this round! Scissors beat paper';
+      playerScore ++;
+      displayScore();
+
+      break;
   }
 }
+
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+  button.addEventListener('click', playRound);
+});
+
 
 //Call playRound 5 times
 //Get player move
@@ -53,6 +149,7 @@ function playRound(playerSelection, computerSelection) {
 //After 5 rounds, checks overall winner
 //Logs overall winner
 
+ /*
 function game() {
   let playerScore = 0;
   let compScore = 0;
@@ -60,7 +157,7 @@ function game() {
   let matchResult = '';
   let playerSelection = '';
 
-  for (let i = 0; i < 5; i++) {
+ for (let i = 0; i < 5; i++) {
     playerSelection = prompt("3...2...1...Shoot!");
 
     matchResult = playRound(playerSelection, computerPlay());
@@ -83,3 +180,4 @@ function game() {
 
 
 game();
+*/

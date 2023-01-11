@@ -1,0 +1,82 @@
+.container {
+  height: 300px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 20% 40% 40%;
+}
+
+#playerScoreTitle {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+
+#title {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+
+
+#compScoreTitle {
+  grid-column: 3/4;
+  grid-row: 1/2;
+}
+
+
+#playerScore {
+  border: 5px solid black;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+
+  background-color: gray;
+  color: white;
+  font-size: 64px;
+
+  display: grid;            
+  align-items: center;      
+  justify-items: center;
+}
+
+#display {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+
+  display: grid;            
+  align-items: center;      
+  justify-items: center;
+}
+
+#compScore {
+  border: 5px solid black;
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+
+  background-color: gray;
+  color: white;
+  font-size: 64px;
+
+
+  display: grid;            
+  align-items: center;      
+  justify-items: center;
+}
+
+.buttons {
+  grid-column: 1 / 4;
+  grid-row: 3 / 4;
+
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  justify-content: center;
+}
+
+button {
+  background-color: #4CAF50; /* Green */
+  border: 1px solid black ;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 20px 50px;
+}
